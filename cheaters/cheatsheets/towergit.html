@@ -1,3 +1,195 @@
-<img src="cheatsheets/TowerGitCheatSheet.png">
-<hr>
-<p>Taken from the <a href="http://blog.fournova.com/2011/06/git-cheat-sheet/">FourNova Tower Git Cheat Sheet</a></p>
+<p><a href="http://brettterpstra.com/projects/markdown-service-tools/" title="Permalink to Markdown Service Tools - BrettTerpstra.com">Source</a></p>
+
+<h3 id="markdownservicetool">Markdown Service Tool</h3>
+
+<p><strong>The following Services are included:</strong></p>
+
+<ul>
+<li>md - Code - Make Code Block</li>
+<li>md - Convert - HTML to Clipboard</li>
+<li>md - Convert - HTML to Markdown</li>
+<li>md - Convert - MultiMarkdown to HTML</li>
+<li>md - Convert - MultiMarkdown to RTF</li>
+<li>md - Emphasis - Bold</li>
+<li>md - Emphasis - Italics</li>
+<li>md - Footnotes - Convert Inline Format</li>
+<li>md - Footnotes - Make IDs Unique</li>
+<li>md - Indentation - Indent</li>
+<li>md - Indentation - Outdent</li>
+<li><del>md - Links - Auto-link web search</del></li>
+<li>md - Links - Auto-link Wikipedia</li>
+<li>md - Links - Chrome Tabs</li>
+<li>md - Links - Clipboard</li>
+<li>md - Links - Flip Link Style</li>
+<li>md - Links - New Link</li>
+<li>md - Links - Safari Tabs</li>
+<li>md - Links - Self-Link URLs</li>
+<li>md - Links - To References</li>
+<li>md - Lists - Bullet List</li>
+<li>md - Lists - Fix Numbered List</li>
+<li>md - Lists - Numbered List</li>
+<li>md - Paragraphs - Blockquote</li>
+<li>md - Paragraphs - Compress Empty Lines</li>
+<li>md - Paragraphs - Preserve Line Breaks</li>
+<li>md - Paragraphs - Unwrap</li>
+<li>md - Tables - Cleanup</li>
+<li>md - Wrap - Angle Brackets</li>
+<li>md - Wrap - Parenthesis</li>
+<li>md - Wrap - Square Brackets</li>
+</ul>
+
+<p>Note: <em>some Services are only available when text is selected, and some only when no text is selected but a text field is focused.</em></p>
+
+<h3 id="descriptions">Descriptions</h3>
+
+<p><em>The suggested key bindings in each description are just what work for me, personally; there&#8217;s no consequence for using something completely different. Just be aware that an application&#8217;s default keyboard commands will override any in the Services menu, so a command&#8217;s shortcut may become unavailable if it&#8217;s already in use by the current application.</em></p>
+
+<h4 id="conversionrendering">Conversion/Rendering</h4>
+
+<dl>
+<dt>Convert - HTML to Clipboard</dt>
+<dd>This service does the same thing as &#8220;MultiMarkdown to HTML,&#8221; but leaves the selection alone and copies the resulting HTML directly to the clipboard.</dd>
+
+<dd>
+<p><strong>Suggested key bindings:</strong> Command-Shift-Option-C</p></dd>
+
+<dt>Convert - HTML to Markdown</dt>
+<dd>This Service &#8220;Markdownifies&#8221; HTML source, creating readable Markdown from it. It does not work directly on Rich Text, but if you use it on the source of a web page it will do its best to recreate the document in clean Markdown.</dd>
+
+<dt>Convert - MultiMarkdown to HTML</dt>
+<dd>Processes the selected text through Markdown and SmartyPants to generate clean, typographically correct HTML. The selected text is replaced with the final HTML, but if you want both you can select it again, copy it (Command-C) and then Undo (Command-Z) to get the original text back. Markdown and SmartyPants are bundled in this Service, so no external installation is required.</dd>
+
+<dt>Convert - MultiMarkdown to RTF</dt>
+<dd>This Service does an in-place conversion to styled text in any field that handles Rich Text. It&#8217;s ideal for writing an email in Markdown and converting it directly in the field before sending.</dd>
+
+<dd>
+<p>See <a href="/2013/03/08/new-in-the-markdown-service-tools-in-place-markdown-to-rtf/">this post</a> for more information and requirements. <em>Full credit to <a href="http://twitter.com/tobiasoleary">Tobias O&#8217;Leary</a> for figuring out this magic.</em></p></dd>
+
+<dt>Footnotes - Convert Inline Format</dt>
+<dd>Allows you to write footnotes inline using <code>(*This is a footnote*)</code> syntax and converts them to standard MultiMarkdown footnotes when run on the full text of the document. Works with multi-paragraph footnotes, keeps markers unique and recognizes existing footnote ids.</dd>
+
+<dd>
+<p>You can also use <code>([*marker] This is a footnote*)</code> to define a custom name for the footnote.</p></dd>
+
+<dt>Footnotes - Make IDs Unique</dt>
+<dd>When working on short documents — such as blog posts — that will be combined with other documents on a page, footnotes can end up with conflicting names or ids. This service, when run on the full text of a single document, will update all existing footnote pairs with a unique, time-based string to avoid any conflicts with other documents.</dd>
+</dl>
+
+<h4 id="linking">Linking</h4>
+
+<dl>
+<dt>Links - Auto-link web search (deprecated)</dt>
+<dd>This Service has been superceded by <a href="/projects/searchlink/">SearchLink</a>.</dd>
+
+<dt>Links - Auto-link Wikipedia</dt>
+<dd>This Service takes the selected text and runs an immediate Wikipedia search for it. The first returned link is inserted with inline link syntax. It works well for unique words (application names, famous people, unusual words).</dd>
+
+<dt>Links - Chrome Tabs/Safari Tabs</dt>
+<dd>These Services will collect all of the tabs in the foreground Safari or Chrome window (respectively), and generate a reference list in the same fashion as Link List From Clipboard. <strong>These Services are only available when no text is selected.</strong></dd>
+
+<dt>Links - Clipboard</dt>
+<dd>Copy text containing links to the clipboard (in any format, even embedded within other text) and this Service will find all of the links and generate a &#8220;reference-style&#8221; list of the urls, with titles you can then refer to in your document using [<code>link text][title]</code> syntax. It creates short titles based on the domain of the url, and adds incrementing numbers to duplicate titles to differentiate. <strong>This Service is only available when no text is selected.</strong></dd>
+
+<dd>
+<p><strong>Suggested key bindings:</strong> Control-Option-V, or run it from the Services menu</p></dd>
+
+<dt>Links - Flip Link Style</dt>
+<dd>This Service uses <a href="https://github.com/drbunsen/formd">formd</a> to guess what the primary format of links (inline or reference) in the document currently is and reverse it. If your document is mostly inline links, this will turn them into numbered reference links, and vice versa. <em>It can be messy if you use footnotes.</em></dd>
+
+<dt>Links - New Link</dt>
+<dd>This will surround the selected text with inline link syntax, and if there&#8217;s a single url in the clipboard, will link it automatically. Otherwise, it will create a shell ([<code>link text]()</code>) with an empty parenthesis pair for you to paste a url into.</dd>
+
+<dd>
+<p><strong>Suggested key bindings:</strong> Command-Shift-L</p></dd>
+
+<dt>Links - Self-Link URLs</dt>
+<dd>This will search your selection for urls that aren&#8217;t currently part of an HTML or Markdown link and surround them with angle brackets (<code>&amp;lt;&amp;gt;</code>). This makes the URL itself a hyperlink when converting to HTML or other formats.</dd>
+
+<dt>Links - To References</dt>
+<dd>Select the entire text of a Markdown document with inline links (or a mix of inline and reference links) and run this service to have your links replaced with the reference title format ([<code>link text][title]</code>) and the references placed at the end of the document. Existing references will be preserved, and titles for new references will be automatically generated based on the domain name.</dd>
+</dl>
+
+<h4 id="lists">Lists</h4>
+
+<dl>
+<dt>Lists - Bullet List/Numbered List</dt>
+<dd>These two commands create and clean up bulleted and ordered lists. They will remove any current list characters at the beginning of each line, compress blank lines in the selection, fix minor indentation mistakes while maintaining the original structure of the list, and properly increment the leading characters of ordered lists. Just select multiple lines and run one of the Services.</dd>
+
+<dd>
+<p><strong>Suggested key bindings:</strong> Command-Shift&#8211;1 (ordered list) and Command-Shift&#8211;8 (unordered list)</p></dd>
+
+<dt>Lists - Fix Numbered List</dt>
+<dd>Fixes numerical order and indentation in MultiMarkdown lists.</dd>
+</dl>
+
+<h4 id="paragraphs">Paragraphs</h4>
+
+<dl>
+<dt>Paragraphs - Blockquote</dt>
+<dd>This service will look for tab indents at the beginning of each line and assume they define the depth of a quote. Tabs at the beginning of each line will be replaced with &#8220;&gt;&#8221; characters.</dd>
+
+<dt>Paragraphs - Compress Empty Lines</dt>
+<dd>Compresses consecutive newlines into a single blank line, good for cleaning up documents after formatting.</dd>
+
+<dt>Paragraphs - Preserve Line Breaks</dt>
+<dd>In Markdown, text without blank lines between it is concatenated into one continuous paragraph, removing line breaks. This is prevented by three spaces at the end of each line, and this Service just adds the spaces to the end of each selected line of text.</dd>
+
+<dt>Paragraphs - Unwrap</dt>
+<dd>Removes single line breaks within the selection to remove the effects of &#8220;hard wrapping.&#8221; It doesn&#8217;t change the way the final document renders, but it makes the original Markdown document much more readable on variable-width screens.</dd>
+</dl>
+
+<h4 id="tables">Tables</h4>
+
+<dl>
+<dt>Tables - Cleanup</dt>
+<dd>Based on the Perl script by Fletcher Penney, this Service will take MultiMarkdown-format tables and clean them up to be readable in plain text.</dd>
+</dl>
+
+<h4 id="misc.">Misc.</h4>
+
+<dl>
+<dt>Code - Make Code Block</dt>
+<dd>Indents the selection by 5 spaces, creating a code (or poetry) block that preserves line breaks and indentations. This format is recognized by all Markdown processors.</dd>
+
+<dt>Emphasis - Bold/Italics</dt>
+<dd>These simply wrap selected text in Markdown emphasis syntax. <code>*</code> for italics, <code>**</code> for bold.</dd>
+
+<dd>
+<p><strong>Suggested key bindings:</strong> Command-Shift-B (bold) and Command-Shift-I (italics)</p></dd>
+
+<dt>Indentation - Indent/Outdent</dt>
+<dd>These Services shift the beginning of all selected lines to the left or right by 4 spaces. Useful for manipulating sections of lists to create nested portions.</dd>
+
+<dd>
+<p><strong>Suggested key bindings:</strong> Command-Shift-] (indent) and Command-Shift-[ (outdent)</p></dd>
+
+<dt>Wrap - Angle Brackets/Parenthesis/Square Brackets</dt>
+<dd>These services wrap the selected text in angle brackets (<code>&amp;lt;&amp;gt;</code>), parenthesis (<code>()</code>) or square brackets (<code>[]</code>). To be useful, they need intuitive shortcuts assigned for quick triggering. You may also consider using <a href="http://brettterpstra.com/2011/11/15/keybindings-new-improved-surround-commands/">keybindings</a> for this.</dd>
+</dl>
+
+<h3 id="installation">Installation</h3>
+
+<p>For more information, see <a href="http://hackademic.postach.io/post/download-and-install-the-markdown-service-tools">Stephen Margheim&#8217;s post at Hackademic</a>.</p>
+
+<p>Simply drag the Services you want to use into <code>~/Library/Services</code> (where ~ represents your user&#8217;s home folder). You will have to enable the Services manually in the Keyboard Shortcuts preference pane of System Preferences. Locate them in the list and check the box to the left. You may have to restart running applications to get them to show up. They will become available in the <strong>Application Menu-&gt;Services</strong> menu, as well as from the right/Control-click contextual menu, under the Services submenu (Snow Leopard).</p>
+
+<p>For more information, see my article on <a href="/howtos/install-an-os-x-system-service/">installing System Services</a>.</p>
+
+<h4 id="customizingkeybindings">Customizing key bindings</h4>
+
+<p>To add keyboard shortcuts to your Services, open System Preferences and choose the Keyboard Shortcuts tab at the top. Sometimes there&#8217;s a delay when loading this tab as OS X indexes all of the available applications and services. Click on the Services item in the left side of the panel, and then locate your new Service on the right. Note that you can use the checkboxes you see there to enable and disable Services without having to remove them from the Services folder.</p>
+
+<figure>
+<img src="http://cdn3.brettterpstra.com/images/grey.gif" alt="System Preferences - Keyboard Screenshot}" id="1" />
+<figcaption>System Preferences - Keyboard Screenshot}</figcaption>
+</figure>
+
+<p>Double click in the blank, white area to the right of your Service, as shown with the arrow in the image. When the blank area turns into a text field, press the key combination you want to use to activate the Service. Use a combination of modifier keys (Command, Shift, Control, Option) and a letter or number. If the combination is available (not used by another Service or existing system shortcut), the input field will disappear and be replaced by your new shortcut. If it doesn&#8217;t do anything, you&#8217;ll need to try a different combination of keys.</p>
+
+<p>If you see a yellow &#8220;warning&#8221; triangle next to your Service, it means that there is another Service or Application Shortcut using that key combination, but it let you add it anyway. This can cause odd results, but mostly just results in neither shortcut doing anything if both associated actions are available at any given time. Sometimes, if one action is only available in one place, and the other in another place, it can be useful to have the same shortcut on related actions. If you&#8217;re not sure what&#8217;s conflicting, it&#8217;s safest just to change your shortcut and avoid the warning.</p>
+
+<h3 id="endnote">End note</h3>
+
+<p>The original Markdown Service Tools were created in Perl, Bash and Ruby and made into Services using <a href="http://wafflesoftware.net/thisservice/">ThisService</a>. I found the Services <a href="http://macosxautomation.com/services/index.html">created by Automator</a> in Snow Leopard to be a bit slow, but have switched to using Automator for newer Services created in Lion and later. All Services sometimes lag on the first run, but are quite fast for me after first use.</p>
+
+<p>For more Markdown goodness, check out <a href="/projects/nvalt/">nvALT</a> and, if you&#8217;re a TextMate user, have a look at the <a href="http://github.com/ttscoff/blogsmith-tmbundle/">Blogsmith Bundle</a> (<a href="http://bundle.weblogzinc.com/">docs</a>). There are a lot of timesaving tricks in there!</p>
