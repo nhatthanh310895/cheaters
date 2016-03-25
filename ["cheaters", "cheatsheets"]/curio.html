@@ -1,0 +1,552 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>Curio Keyboard Shortcuts</title>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+<style type="text/css">
+	<!--
+	
+*, *:before, *:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	font: 125%/1.4 'Avenir Next', sans-serif;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: #c0c5cc;
+	font-weight: 400;
+}
+body {
+	font-size: .8rem;
+}
+.container {
+	background-color: #fff;
+	width: 90%;
+	padding: 50px 70px;
+	margin: 30px 50px;
+	color: #333;
+	box-shadow: 0px 20px 20px #222;
+}
+h1 {
+	color: #4b4b4b;
+	font-size: 2rem;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	margin: 0;
+}
+p {
+	color: #333;
+}
+.shortcuts {
+	font-size: .7rem;
+	margin: 20px 0;
+	border-collapse: collapse;
+	border: 1px #888 solid;
+	border-top: 0 none;
+	background: #fff;
+	width: 100%;
+}
+.shortcuts caption {
+	color: #376098;
+	border-bottom: 1px #aaa solid;
+	padding: 5px;
+	text-align: left;
+	font-size: 1.5rem;
+}
+.shortcuts th {
+	text-align: left;
+	padding: 5px 0 2px 5px;
+	border-bottom: 1px #aaa solid;
+	font-size: .8rem;
+}
+.shortcuts tr {
+	border-bottom: 1px #ccc solid;
+	border-left: 1px #aaa solid;
+	border-right: 1px #aaa solid;
+}
+.shortcuts tr.odd {
+}
+.shortcuts tr.even {
+	background: #f9fafb;
+}
+.shortcuts tr:last-child {
+	border-bottom: none;
+}
+.shortcuts td {
+	padding: 5px;
+	line-height: 1.6;
+}
+	-->
+</style>
+
+<script type="text/javascript" language="javascript">
+<!--
+function outputShortcuts(topic, shortcuts)
+{
+	var index;
+	
+	document.writeln('<table class="shortcuts" border="0" cellpadding="0" cellspacing="0">');
+	document.writeln('<caption>'+topic+'</caption>');
+	document.writeln('<tr class="odd">');
+	document.writeln('<th scope="col" width="40%">Action</th>');
+	document.writeln('<th scope="col">Shortcut</th>');
+	document.writeln('</tr>');
+
+	for (index = 0; index < shortcuts.length; index ++) {
+		if (index % 2 == 0)
+			document.writeln('<tr class="even">');
+		else
+			document.writeln('<tr class="odd">');
+		document.writeln('<td>'+shortcuts[index][0]+'</td>');
+		document.writeln('<td>'+shortcuts[index][1]+'</td>');
+		document.writeln('</tr>');
+	}
+
+	document.writeln('</table>');
+}
+function outputViewShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Show/Hide Organizer", "&#8679;&#8984;0 (zero)");
+	shortcuts[shortcuts.length] = new Array("Show/Hide Shelf", "&#8997;&#8984;0 (zero)");
+	shortcuts[shortcuts.length] = new Array("Show/Hide Organizer and Shelf", "&#8997;&#8679;&#8984;0 (zero)");
+	shortcuts[shortcuts.length] = new Array("Show idea space at actual size", "&#8984;0 or double-click zoom slider if in toolbar");
+	shortcuts[shortcuts.length] = new Array("Quick zoom to fit", "Hold down Q");
+	shortcuts[shortcuts.length] = new Array("Dismiss an open inspector popover", "&#9099; (Escape)");
+
+	outputShortcuts("Views", shortcuts);
+}
+function outputMouseModeShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Pan", "Scroll with mouse or trackpad;<br/>or hold down Spacebar, then click and drag to pan");
+	shortcuts[shortcuts.length] = new Array("Zoom in", "Outward pinch gesture with trackpad;<br/>or &#8997;&#8984;Scroll Up;<br/>or hold down Spacebar, then hold down &#8984;, then click to zoom");
+	shortcuts[shortcuts.length] = new Array("Zoom out", "Inward pinch gesture with trackpad;<br/>or &#8997;&#8984;Scroll Down;<br/>or hold down Spacebar, then hold down &#8997;, then click to zoom");
+	shortcuts[shortcuts.length] = new Array("Zoom in within gallery windows", "Outward pinch gesture with trackpad;<br/>or &#8997;&#8984;Scroll Up");
+	shortcuts[shortcuts.length] = new Array("Zoom out within gallery windows", "Inward pinch gesture with trackpad;<br/>or &#8997;&#8984;Scroll Down");
+
+	outputShortcuts("Mouse", shortcuts);
+}
+function outputDrawingToolShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Select tool", "&#9099; (Escape)");
+	shortcuts[shortcuts.length] = new Array("Figure tool", "F");
+	shortcuts[shortcuts.length] = new Array("Text tool", "T");
+	shortcuts[shortcuts.length] = new Array("Line tool", "L");
+	shortcuts[shortcuts.length] = new Array("Brush tool", "B");
+	shortcuts[shortcuts.length] = new Array("Eraser tool", "E");
+
+	outputShortcuts("Drawing Tools", shortcuts);
+}
+function outputFigureSnappingShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Toggle edge snap guide", "S");
+	shortcuts[shortcuts.length] = new Array("Toggle center snap guide", "C");
+	shortcuts[shortcuts.length] = new Array("Toggle snap to grid", "G");
+	shortcuts[shortcuts.length] = new Array("Show/Hide grid", "&#8679;G");
+
+	outputShortcuts("Figure Snapping", shortcuts);
+}
+function outputFigureNudgingShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Move object by one pixel", "Arrow keys (if grid is not enabled)<br/>&#8997;Arrow or &#8679;Arrow keys (if grid is enabled)");
+	shortcuts[shortcuts.length] = new Array("Move object by one grid space", "Arrow keys (if grid is enabled)<br/>&#8997;Arrow or &#8679;Arrow keys (if grid is not enabled)");
+	shortcuts[shortcuts.length] = new Array("Move object to next grid intersection", "&#8997;&#8679;Arrow keys");
+
+	outputShortcuts("Figure Nudging", shortcuts);
+}
+function outputFigureSizingShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Resize object", "Drag handle");
+	shortcuts[shortcuts.length] = new Array("Constrain aspect ratio when resizing object", "&#8679;Drag handle (note that some items, like images, default to resizing proportionally, so holding &#8679; would allow you to resize those figures non-proportionally)");
+	shortcuts[shortcuts.length] = new Array("Resize object to its natural size", "N");
+
+	outputShortcuts("Figure Sizing", shortcuts);
+}
+function outputFigureRotatingShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Rotate object", "&#8984;Drag handle");
+	shortcuts[shortcuts.length] = new Array("Rotate object 45&deg;", "R");
+	shortcuts[shortcuts.length] = new Array("Rotate object -45&deg;", "&#8679;R");
+	shortcuts[shortcuts.length] = new Array("Rotate object 1&deg;", "&#8997;R");
+	shortcuts[shortcuts.length] = new Array("Rotate object -1&deg;", "&#8997;&#8679;R");
+	shortcuts[shortcuts.length] = new Array("Rotate object to 0&deg;", "Z");
+
+	outputShortcuts("Figure Rotating", shortcuts);
+}
+function outputFigureSelectionShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Add (or remove) selected object to previously selected objects", "&#8679;Click, &#8984;Click");
+	shortcuts[shortcuts.length] = new Array("Add (or remove) selected range to previously selected objects", "&#8679;Drag, &#8984;Drag");
+	shortcuts[shortcuts.length] = new Array("Constrain selected range to figure layer", "&#8997;Drag");
+	shortcuts[shortcuts.length] = new Array("Constrain selected range to scribble layer", "&#8997;&#8984;Drag");
+
+	outputShortcuts("Figure Selection", shortcuts);
+}
+function outputFigureCopyingShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Cut selected text or object", "&#8984;X");
+	shortcuts[shortcuts.length] = new Array("Copy selected text or object", "&#8984;C");
+	shortcuts[shortcuts.length] = new Array("Paste selected text or object", "&#8984;V");
+	shortcuts[shortcuts.length] = new Array("Duplicate object", "&#8997;Drag or &#8984;D");
+	shortcuts[shortcuts.length] = new Array("Delete selected object", "&#9003;");
+
+	outputShortcuts("Figure Copying", shortcuts);
+}
+function outputFigureMetaShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Toggle checkbox", "&#8679;X");
+	shortcuts[shortcuts.length] = new Array("Toggle checkbox checked/unchecked state", "X");
+	shortcuts[shortcuts.length] = new Array("Toggle start date", "D");
+	shortcuts[shortcuts.length] = new Array("Toggle due date", "&#8679;D");
+	shortcuts[shortcuts.length] = new Array("Increase date duration", "&#8997;D");
+	shortcuts[shortcuts.length] = new Array("Decrease date duration", "&#8997;&#8679;D");
+	shortcuts[shortcuts.length] = new Array("Increase the adornment flag size", "&#8997;]");
+	shortcuts[shortcuts.length] = new Array("Decrease the adornment flag size", "&#8997;[");
+	shortcuts[shortcuts.length] = new Array("Tags mini popover", ", (comma; think of a comma-separated list of tags)");
+	shortcuts[shortcuts.length] = new Array("Percent complete mini popover", ". (period; think of a long line of dots indicating progress being made)");
+	shortcuts[shortcuts.length] = new Array("Dates mini popover", "/ (slash; think of a slash used in a date such as 12/25/2013)");
+	shortcuts[shortcuts.length] = new Array("When editing tag emoji field, display the standard OS X Character Viewer popover to insert an emoji or Unicode symbol", "&#8963;&#8984;Spacebar");
+
+	outputShortcuts("Figure Meta", shortcuts);
+}
+function outputFigureMiscellaneousShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Open a figure's asset, go to the figure's jump target, or activate in-place browsing or editing of movies, WebViews, or PDFs", "Double-Click on figure");
+	shortcuts[shortcuts.length] = new Array("Open the figure's asset bypassing in-place browsing", "&#8997;Double-Click on figure");
+	shortcuts[shortcuts.length] = new Array("Show Insert popover menu", "I");
+	shortcuts[shortcuts.length] = new Array("Show Quick Look Preview", "Spacebar if not a parent node in a list or mind map, else &#8997;&#8679;Spacebar");
+	shortcuts[shortcuts.length] = new Array("Toggle shadow", "S");
+	shortcuts[shortcuts.length] = new Array("Flip through a series of overlapping figures", "&#8997;Scroll with mouse hovering over overlapping figures");
+	shortcuts[shortcuts.length] = new Array("Decrease the pen size used for borders and lines", "[");
+	shortcuts[shortcuts.length] = new Array("Increase the pen size used for borders and lines", "]");
+	shortcuts[shortcuts.length] = new Array("Decrease the adornment flag size", "&#8997;[");
+	shortcuts[shortcuts.length] = new Array("Increase the adornment flag size", "&#8997;]");
+	shortcuts[shortcuts.length] = new Array("Decrease the figure corner", "&#8679;[");
+	shortcuts[shortcuts.length] = new Array("Increase the figure corner", "&#8679;]");
+	shortcuts[shortcuts.length] = new Array("Decrease the figure margin", "&#8997;&#8679;[");
+	shortcuts[shortcuts.length] = new Array("Increase the figure margin", "&#8997;&#8679;]");
+
+	outputShortcuts("Figure Miscellaneous", shortcuts);
+}
+function outputFilesShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Embed a copy of a file into Curio", "Drag file from Finder to an idea space");
+	shortcuts[shortcuts.length] = new Array("Move file into Curio", "&#8984;Drag file from Finder to an idea space");
+	shortcuts[shortcuts.length] = new Array("Create an alias to a file within Curio", "&#8997;Drag file from Finder to an idea space");
+	shortcuts[shortcuts.length] = new Array("Drag a copy of the asset file associated with a figure out of Curio", "Select a single asset figure, &#8997;&#8679;&#8984;Drag the figure and notice you are now dragging its file representation, <i>release the keys</i> while still continuing to drag, then drop the file on the Finder, Desktop, or other application");
+	
+	outputShortcuts("Files", shortcuts);
+}
+function outputBrushShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Decrease the brush size when painting", "[");
+	shortcuts[shortcuts.length] = new Array("Increase the brush size when painting", "]");
+
+	outputShortcuts("Brush &amp; Pens", shortcuts);
+}
+function outputTextEditingShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Create a new text figure", "Click on the idea space background if the Text tool is active, else double-click if the Select tool is active");
+	shortcuts[shortcuts.length] = new Array("Create a new text figure with a certain width", "Click and drag on the idea space background if the Text tool is active, else double-click and drag if the Select tool is active");
+	shortcuts[shortcuts.length] = new Array("Create text figure under selected object", "&#8984;&#9166;");
+	shortcuts[shortcuts.length] = new Array("Create text figure over selected object", "&#8679;&#8984;&#9166;");
+	shortcuts[shortcuts.length] = new Array("Enter a carriage &#9166; while editing", "&#8997;&#9166;");
+	shortcuts[shortcuts.length] = new Array("End text editing", "&#9099; (Escape)");
+
+	outputShortcuts("Text Editing", shortcuts);
+}
+function outputIdeaGraphsShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Create a connected text figure with unidirectional line", "While editing an existing text figure, &#8984;Click on the idea space background");
+	shortcuts[shortcuts.length] = new Array("Create a connected text figure with bidirectional line", "While editing an existing text figure, &#8679;&#8984;Click on the idea space background");
+	shortcuts[shortcuts.length] = new Array("Create a connected text figure with nondirectional line", "While editing an existing text figure, &#8997;&#8984;Click on the idea space background");
+	shortcuts[shortcuts.length] = new Array("Quickly connect one figure to another with unidirectional line", "Drag one figure on another while holding &#8984;");
+	shortcuts[shortcuts.length] = new Array("Quickly connect one figure to another with bidirectional line", "Drag one figure on another while holding &#8679;&#8984;");
+	shortcuts[shortcuts.length] = new Array("Quickly connect one figure to another with nondirectional line", "Drag one figure on another while holding &#8997;&#8984;");
+	
+	outputShortcuts("Idea Graphs", shortcuts);
+}
+function outputListCollectionShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Edit selected item", "&#9166;");
+	shortcuts[shortcuts.length] = new Array("Stop editing item", "&#9099; (Escape)");
+	shortcuts[shortcuts.length] = new Array("Delete selected item", "&#9003;");
+	shortcuts[shortcuts.length] = new Array("Create next text sibling", "&#8984;&#9166; or &#9166; if editing");
+	shortcuts[shortcuts.length] = new Array("Create previous text sibling", "&#8679;&#8984;&#9166; or &#8679;&#9166; if editing");
+	shortcuts[shortcuts.length] = new Array("Create child", "&#8997;&#8984;&#9166;");
+	shortcuts[shortcuts.length] = new Array("Split the text at the current cursor position and make new sibling", "&#8963;&#9166;");
+	shortcuts[shortcuts.length] = new Array("Enter a carriage &#9166; while editing", "&#8997;&#9166;");
+	shortcuts[shortcuts.length] = new Array("Indent a collection figure (turn figure into a child)", "&#8677;, &#8963;&#8984;&#8594;, or &#8963;&#8679;&#8594;");
+	shortcuts[shortcuts.length] = new Array("Outdent a collection figure (turn figure into a parent)", "&#8679;&#8677;, &#8963;&#8984;&#8592;, or &#8963;&#8679;&#8592;");
+	shortcuts[shortcuts.length] = new Array("Insert a tab while editing", "&#8997;&#8677;");
+	shortcuts[shortcuts.length] = new Array("Toggle the expand/collapse of a branch", "Quick Spacebar Tap");
+	shortcuts[shortcuts.length] = new Array("Toggle the expand/collapse of a branch and its children", "Quick &#8997;Spacebar Tap");
+	shortcuts[shortcuts.length] = new Array("Toggle the expand/collapse all branches at this level", "Quick &#8679;Spacebar Tap");
+	shortcuts[shortcuts.length] = new Array("Move the selected figures above their siblings", "&#8963;&#8984;&#8593; or &#8963;&#8679;&#8593;");
+	shortcuts[shortcuts.length] = new Array("Move the selected figures below their siblings", "&#8963;&#8984;&#8595; or &#8963;&#8679;&#8595;");
+	shortcuts[shortcuts.length] = new Array("Adopt the branch style when moving nodes", "Press &#8679; right before dropping");
+	shortcuts[shortcuts.length] = new Array("Create a connected list figure with unidirectional line", "Select an existing list figure, &#8984;Click on idea space background");
+	shortcuts[shortcuts.length] = new Array("Create a connected list figure with bidirectional line", "Select an existing list figure, &#8679;&#8984;Click on idea space background");
+	shortcuts[shortcuts.length] = new Array("Create a connected list figure with nondirectional line", "Select an existing list figure, &#8997;&#8984;Click on idea space background");
+
+	outputShortcuts("List Collections", shortcuts);
+}
+function outputMindMapCollectionShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Edit selected item", "&#9166;");
+	shortcuts[shortcuts.length] = new Array("Stop editing item", "&#9099; (Escape)");
+	shortcuts[shortcuts.length] = new Array("Delete selected item", "&#9003;");
+	shortcuts[shortcuts.length] = new Array("Create next text sibling", "&#8984;&#9166; or &#9166; if editing");
+	shortcuts[shortcuts.length] = new Array("Create previous text sibling", "&#8679;&#8984;&#9166; or &#8679;&#9166; if editing");
+	shortcuts[shortcuts.length] = new Array("Create child", "&#8677; or &#8997;&#8984;&#9166;");
+	shortcuts[shortcuts.length] = new Array("Split the text at the current cursor position and make new sibling", "&#8963;&#9166;");
+	shortcuts[shortcuts.length] = new Array("Enter a carriage &#9166; while editing", "&#8997;&#9166;");
+	shortcuts[shortcuts.length] = new Array("Indent a collection figure (turn figure into a child)", "&#8963;&#8984;&#8594; or &#8963;&#8679;&#8594;");
+	shortcuts[shortcuts.length] = new Array("Outdent a collection figure (turn figure into a parent)", "&#8963;&#8984;&#8592; or &#8963;&#8679;&#8592;");
+	shortcuts[shortcuts.length] = new Array("Toggle the expand/collapse of a branch", "Quick Spacebar Tap");
+	shortcuts[shortcuts.length] = new Array("Toggle the expand/collapse of a branch and its children", "Quick &#8997;Spacebar Tap");
+	shortcuts[shortcuts.length] = new Array("Toggle the expand/collapse all branches at this level", "Quick &#8679;Spacebar Tap");
+	shortcuts[shortcuts.length] = new Array("Move the selected figures above their siblings", "&#8963;&#8984;&#8593; or &#8963;&#8679;&#8593;");
+	shortcuts[shortcuts.length] = new Array("Move the selected figures below their siblings", "&#8963;&#8984;&#8595; or &#8963;&#8679;&#8595;");
+	shortcuts[shortcuts.length] = new Array("Adopt the branch style when moving nodes", "Press &#8679; right before dropping");
+	shortcuts[shortcuts.length] = new Array("Create a connected mind map figure with unidirectional line", "Select an existing mind map figure, &#8984;Click on idea space background");
+	shortcuts[shortcuts.length] = new Array("Create a connected mind map figure with bidirectional line", "Select an existing mind map figure, &#8679;&#8984;Click on idea space background");
+	shortcuts[shortcuts.length] = new Array("Create a connected mind map figure with nondirectional line", "Select an existing mind map figure, &#8997;&#8984;Click on idea space background");
+
+	outputShortcuts("Mind Map Collections", shortcuts);
+}
+function outputTableCollectionShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Edit selected item", "&#9166;");
+	shortcuts[shortcuts.length] = new Array("Stop editing item", "&#9099; (Escape)");
+	shortcuts[shortcuts.length] = new Array("Delete selected item", "&#9003;");
+	shortcuts[shortcuts.length] = new Array("Edit the next item", "&#8677;");
+	shortcuts[shortcuts.length] = new Array("Edit the previous item", "&#8679;&#8677;");
+	shortcuts[shortcuts.length] = new Array("Enter a carriage &#9166; while editing", "&#8997;&#9166;");
+	shortcuts[shortcuts.length] = new Array("Resize just a row or column, without resizing entire table", "&#8997;Drag row or column divider");
+	shortcuts[shortcuts.length] = new Array("Add Row Above", "Select cell, press &#8997;Up");
+	shortcuts[shortcuts.length] = new Array("Add Row Above and Resize Table", "Select cell, press &#8997;&#8679;Up");
+	shortcuts[shortcuts.length] = new Array("Add Row Below", "Select cell, press &#8997;Down");
+	shortcuts[shortcuts.length] = new Array("Add Row Below and Resize Table", "Select cell, press &#8997;&#8679;Down");
+	shortcuts[shortcuts.length] = new Array("Add Column Before", "Select cell, press &#8997;Left");
+	shortcuts[shortcuts.length] = new Array("Add Column Before and Resize Table", "Select cell, press &#8997;&#8679;Left");
+	shortcuts[shortcuts.length] = new Array("Add Column After", "Select cell, press &#8997;Right");
+	shortcuts[shortcuts.length] = new Array("Add Column After and Resize Table", "Select cell, press &#8997;&#8679;Right");
+	shortcuts[shortcuts.length] = new Array("Create a connected table figure with unidirectional line", "Select an existing table figure, &#8984;Click on idea space background");
+	shortcuts[shortcuts.length] = new Array("Create a connected table figure with bidirectional line", "Select an existing table figure, &#8679;&#8984;Click on idea space background");
+	shortcuts[shortcuts.length] = new Array("Create a connected table figure with nondirectional line", "Select an existing table figure, &#8997;&#8984;Click on idea space background");
+
+	outputShortcuts("Table Collections", shortcuts);
+}
+function outputIndexCardCollectionShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Edit selected item", "&#9166;");
+	shortcuts[shortcuts.length] = new Array("Stop editing item", "&#9099; (Escape)");
+	shortcuts[shortcuts.length] = new Array("Delete selected item", "&#9003;");
+	shortcuts[shortcuts.length] = new Array("Move between the title and body fields", "&#8677;, &#8679;&#8677;");
+	shortcuts[shortcuts.length] = new Array("Insert a tab while editing", "&#8997;&#8677;");
+	shortcuts[shortcuts.length] = new Array("Toggle the expand/collapse of the index card", "Quick Spacebar Tap (while the index card or its title is selected)");
+	shortcuts[shortcuts.length] = new Array("Create a connected index card figure with unidirectional line", "Select an existing index card figure, &#8984;Click on idea space background");
+	shortcuts[shortcuts.length] = new Array("Create a connected index card figure with bidirectional line", "Select an existing index card figure, &#8679;&#8984;Click on idea space background");
+	shortcuts[shortcuts.length] = new Array("Create a connected index card figure with nondirectional line", "Select an existing index card figure, &#8997;&#8984;Click on idea space background");
+	
+	outputShortcuts("Index Card Collections", shortcuts);
+}
+function outputAlbumCollectionShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Edit selected item", "&#9166;");
+	shortcuts[shortcuts.length] = new Array("Stop editing item", "&#9099; (Escape)");
+	shortcuts[shortcuts.length] = new Array("Delete selected item", "&#9003;");
+	shortcuts[shortcuts.length] = new Array("Toggle the expand/collapse of the album", "Quick Spacebar Tap (while the album is selected, note this is only possible if the pinboard has a title)");
+	shortcuts[shortcuts.length] = new Array("Create a connected album figure with unidirectional line", "Select an existing album figure, &#8984;Click on idea space background");
+	shortcuts[shortcuts.length] = new Array("Create a connected album figure with bidirectional line", "Select an existing album figure, &#8679;&#8984;Click on idea space background");
+	shortcuts[shortcuts.length] = new Array("Create a connected album figure with nondirectional line", "Select an existing album figure, &#8997;&#8984;Click on idea space background");
+	
+	outputShortcuts("Album Collections", shortcuts);
+}
+function outputPinboardCollectionShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Edit selected item", "&#9166;");
+	shortcuts[shortcuts.length] = new Array("Stop editing item", "&#9099; (Escape)");
+	shortcuts[shortcuts.length] = new Array("Delete selected item", "&#9003;");
+	shortcuts[shortcuts.length] = new Array("Toggle the expand/collapse of the pinboard", "Quick Spacebar Tap (while the pinboard is selected, note this is only possible if the pinboard has a title)");
+	shortcuts[shortcuts.length] = new Array("Create a connected pinboard figure with unidirectional line", "Select an existing pinboard figure, &#8984;Click on idea space background");
+	shortcuts[shortcuts.length] = new Array("Create a connected pinboard figure with bidirectional line", "Select an existing pinboard figure, &#8679;&#8984;Click on idea space background");
+	shortcuts[shortcuts.length] = new Array("Create a connected pinboard figure with nondirectional line", "Select an existing pinboard figure, &#8997;&#8984;Click on idea space background");
+	
+	outputShortcuts("Pinboard Collections", shortcuts);
+}
+function outputStackCollectionShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Edit selected item", "&#9166;");
+	shortcuts[shortcuts.length] = new Array("Stop editing item", "&#9099; (Escape)");
+	shortcuts[shortcuts.length] = new Array("Delete selected item", "&#9003;");
+	shortcuts[shortcuts.length] = new Array("Create next text sibling", "&#8984;&#9166;, or just &#9166; if editing");
+	shortcuts[shortcuts.length] = new Array("Create previous text sibling", "&#8679;&#8984;&#9166;, or just &#8679;&#9166; if editing");
+	shortcuts[shortcuts.length] = new Array("Move the selected figures above their siblings", "&#8963;&#8984;&#8593; or &#8963;&#8679;&#8593;");
+	shortcuts[shortcuts.length] = new Array("Move the selected figures below their siblings", "&#8963;&#8984;&#8595; or &#8963;&#8679;&#8595;");
+	shortcuts[shortcuts.length] = new Array("Toggle the expand/collapse of the stack", "Quick Spacebar Tap (while the stack is selected, note this is only possible if the stack has a title)");
+	shortcuts[shortcuts.length] = new Array("Create a connected stack figure with unidirectional line", "Select an existing stack figure, &#8984;Click on idea space background");
+	shortcuts[shortcuts.length] = new Array("Create a connected stack figure with bidirectional line", "Select an existing stack figure, &#8679;&#8984;Click on idea space background");
+	shortcuts[shortcuts.length] = new Array("Create a connected stack figure with nondirectional line", "Select an existing stack figure, &#8997;&#8984;Click on idea space background");
+	
+	outputShortcuts("Stack Collections", shortcuts);
+}
+function outputLineShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Snap line to 45 degree increment", "&#8679; (while dragging endpoint)");
+	shortcuts[shortcuts.length] = new Array("Add another point to a line <i>currently being created</i>", "Hold &#8997; while releasing mouse button then click for the next point");
+	shortcuts[shortcuts.length] = new Array("Add another point to an <i>existing</i> line", "Right-click on the line and choose Insert Midpoint");
+	shortcuts[shortcuts.length] = new Array("Stick line endpoint to a location within a target figure", "&#8984; (while dragging endpoint)");
+	shortcuts[shortcuts.length] = new Array("Freely position line endpoint (will not stick to another figure)", "&#8963; (while dragging endpoint)");
+
+	outputShortcuts("Lines", shortcuts);
+}
+function outputOrganizerShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("Rename an Organizer item", "&#9166;, Enter");
+	shortcuts[shortcuts.length] = new Array("Indent Organizer items to the right", "&#8677;");
+	shortcuts[shortcuts.length] = new Array("Move indented Organizer items to the left", "&#8679;&#8677;");
+	shortcuts[shortcuts.length] = new Array("Extend selection to the selected Organizer item", "&#8679;Click");
+	shortcuts[shortcuts.length] = new Array("Add the selected range to previously selected Organizer items", "&#8679;Drag");
+	shortcuts[shortcuts.length] = new Array("Add (or remove) selected Organizer item to previously selected Organizer items", "&#8984;Click");
+	shortcuts[shortcuts.length] = new Array("Select next Organizer item", "&#8595;, or &#8984;&#8595; if the Organizer doesn't have focus");
+	shortcuts[shortcuts.length] = new Array("Extend selection to the next Organizer item", "&#8679;&#8595;");
+	shortcuts[shortcuts.length] = new Array("Select previous Organizer item", "&#8593;, or &#8984;&#8593; if the Organizer doesn't have focus");
+	shortcuts[shortcuts.length] = new Array("Extend selection to the previous Organizer item", "&#8679;&#8593;");
+	shortcuts[shortcuts.length] = new Array("Delete selected Organizer items", "&#9003;");
+	shortcuts[shortcuts.length] = new Array("Create a copy of an Organizer item", "&#8997;Drag the item to a destination location");
+	shortcuts[shortcuts.length] = new Array("Create an alias to an Organizer item", "&#8997;&#8984;Drag the item to a destination location");
+	shortcuts[shortcuts.length] = new Array("Collapse selected Organizer item", "&#8592;");
+	shortcuts[shortcuts.length] = new Array("Collapse selected Organizer item and all child Organizer items", "&#8997;&#8592;");
+	shortcuts[shortcuts.length] = new Array("Expand selected Organizer item", "&#8594;");
+	shortcuts[shortcuts.length] = new Array("Expand selected Organizer item and all child Organizer items", "&#8997;&#8594;");
+	shortcuts[shortcuts.length] = new Array("Scroll down a &quot;page&quot; of Organizer items without changing the selection", "Page Down");
+	shortcuts[shortcuts.length] = new Array("Scroll up a &quot;page&quot; of Organizer items without changing the selection", "Page Up");
+
+	outputShortcuts("Organizer", shortcuts);
+}
+function outputPresentationModeShortcuts()
+{
+	var shortcuts;
+	shortcuts = new Array();
+	shortcuts[shortcuts.length] = new Array("End the presentation", "&#9099; (Escape)");
+	shortcuts[shortcuts.length] = new Array("Go to the next slide", "&#8594;, &#8595;, Page Down, &#8984;&#8595;, Click when mouse cursor is hidden");
+	shortcuts[shortcuts.length] = new Array("Go to the previous slide", "&#8592;, &#8593;, Page Up, &#8984;&#8593;, &#8997;Click (or Right-Click) when mouse cursor is hidden");
+	shortcuts[shortcuts.length] = new Array("Go to the first slide", "Home");
+	shortcuts[shortcuts.length] = new Array("Go to the last slide", "End");
+	shortcuts[shortcuts.length] = new Array("Go back in history", "[, Backspace, &#8984;&#8592;");
+	shortcuts[shortcuts.length] = new Array("Go forward in history", "], &#8984;&#8594;");
+	shortcuts[shortcuts.length] = new Array("Toggle the expand/collapse of a selected mind map branch", "Quick Spacebar Tap");
+	shortcuts[shortcuts.length] = new Array("Toggle the expand/collapse of a selected mind map branch and its children", "Quick &#8997;Spacebar Tap");
+	shortcuts[shortcuts.length] = new Array("Toggle the expand/collapse all selected mind map branches at this level", "Quick &#8679;Spacebar Tap");
+	shortcuts[shortcuts.length] = new Array("Toggle scaling mode", "S");
+	shortcuts[shortcuts.length] = new Array("Scroll the idea space", "Click and drag on the background");
+	shortcuts[shortcuts.length] = new Array("Select a figure", "Click on figure");
+	shortcuts[shortcuts.length] = new Array("Open a figure's asset or go to the figure's jump target", "Double-Click on figure");
+	shortcuts[shortcuts.length] = new Array("Play/pause a selected media figure", "Spacebar");
+	shortcuts[shortcuts.length] = new Array("Set a rating", "0 through 5 (when a figure is selected)");
+
+	outputShortcuts("Presentation Mode", shortcuts);
+}
+
+// -->
+</script>
+
+</head>
+
+<body>
+<div class="container">
+<h1>Curio Keyboard Shortcuts</h1>
+<p>
+	In addition to standard menu shortcuts, such as &#8984;S to save, Curio supports a large number of keyboard shortcuts you can use to be more productive.
+</p>
+<p>
+	&#8984; = Command, &#8997; = Option, &#8963; = Control, &#8679; = Shift, &#9003; = Delete, &#9166; = Return, &#9099; = Escape
+</p>
+<script type="text/javascript" language="javascript">
+outputViewShortcuts();
+outputMouseModeShortcuts();
+outputFilesShortcuts();
+outputDrawingToolShortcuts();
+outputFigureSnappingShortcuts();
+outputFigureNudgingShortcuts();
+outputFigureSizingShortcuts();
+outputFigureRotatingShortcuts();
+outputFigureSelectionShortcuts();
+outputFigureCopyingShortcuts();
+outputFigureMetaShortcuts();
+outputFigureMiscellaneousShortcuts();
+outputBrushShortcuts();
+outputTextEditingShortcuts();
+outputIdeaGraphsShortcuts();
+outputLineShortcuts();
+outputListCollectionShortcuts();
+outputMindMapCollectionShortcuts();
+outputTableCollectionShortcuts();
+outputIndexCardCollectionShortcuts();
+outputAlbumCollectionShortcuts();
+outputPinboardCollectionShortcuts();
+outputStackCollectionShortcuts();
+outputOrganizerShortcuts();
+outputPresentationModeShortcuts();
+</script>
+</div>
+</body>
+</html>
+
